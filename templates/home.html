@@ -15,12 +15,13 @@
     </style>
   </head>
     <body>
+     {% include 'nav.html' %}
      <div class = "container">
         <h1 class = "text-center mt-2 mb-4">Job Careers</h1>
         <img src=static/home.jpg class="img-fluid" id = "banner">
         <h2 class = "text-center">About Job</h2>
-        <p class = "lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        <p class = "text-dark fs-6">
+          Job is an exciting company which creates jobs. Our mission is to make the world a better place by creating jobs.
         </p>
         <h2 class = "text-center mt-2 mb-4">Open Positions</h2>
         <p class = "text-center">
@@ -29,9 +30,9 @@
           {% endfor %}
         </p>
         <div class = "text-center">
-          <button class="btn btn-primary btn-lg">Contact us</button>
-            <p>Copyright 2025, Job</p>
+          <a href="mailto:sidpkul21@gmail.com?subject=Love%20Thy%20Website&body=Simple%20project%20to%20get%20started%20with%20web%20dev" class="btn btn-primary btn-lg">Contact us</a>
         </div>
       </div>
+      {% include 'footer.html' %}
     </body>
 </html>

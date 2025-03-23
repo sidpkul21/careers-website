@@ -5,7 +5,7 @@ JOBS = [
   {
     'id': 1,
     'title': 'Data Analyst',
-    'location': 'Grand Rapids, USA',
+    'location': 'Grand Rapids, MI',
     'salary': '$100,000'
   },
   {
@@ -16,7 +16,7 @@ JOBS = [
   {
     'id': 3,
     'title': 'Backend Eng',
-    'location': 'San Fransisco',
+    'location': 'San Fransisco, CA',
     'salary': '$150,000'
   }
 ]
