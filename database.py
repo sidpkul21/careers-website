@@ -1,6 +1,8 @@
 import os
 import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 headers = {
@@ -20,4 +22,10 @@ def load_job_from_db(id):
     results = requests.get(url, headers=headers)
     job = results.json()
     return job
-    
+
+def add_application_to_db(job_id, application):
+    application = dict(application)
+    application["job_id"] = job_id
+    del application["submit"]
+    response = requests.post(f"{SUPABASE_URL}/rest/v1/applications", headers=headers, json=application)
+    return response

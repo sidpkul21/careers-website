@@ -1,5 +1,5 @@
-from flask import Flask, jsonify, render_template
-from database import load_jobs_from_db, load_job_from_db
+from flask import Flask, jsonify, render_template, request
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db
 app = Flask(__name__)
 
 COMPANY_NAME = "Job"
@@ -25,6 +25,16 @@ def show_job(id):
     job = job[0]
     return render_template('jobpage.html', job=job,
                          company_name=COMPANY_NAME)
-  
+
+@app.route("/job/<id>/apply", methods = ["post"])
+def apply_to_job(id):
+  data = request.form
+  job = load_job_from_db(id)[0]
+  response = add_application_to_db(id, data)
+  if response.status_code == 201:
+    return render_template('application_submitted.html', application=data, job=job)
+  else:
+    return f"Error code: {response.status_code}; If error code is 400 you did not complete the application."
+
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', debug =True)
